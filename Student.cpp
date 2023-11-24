@@ -18,6 +18,7 @@ namespace sdds {
     Student& Student::operator=(const Student& other) {
         if (this != &other) {
             delete[] name;
+            this->name = nullptr; //Another possible source of memory leak.
             age = other.age;
             name = new char[strlen(other.name) + 1];
             strcpy(name, other.name);
